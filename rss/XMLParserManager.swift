@@ -6,7 +6,7 @@
 //  Copyright © 2020 Арина. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class XmlParserManager: NSObject, XMLParserDelegate {
     
@@ -20,6 +20,7 @@ class XmlParserManager: NSObject, XMLParserDelegate {
     var fdescription = NSMutableString()
     var fdate = NSMutableString()
     var fcategory = NSMutableString()
+    var image = UIImage(named: "news")
     
     
     // initilise parser
@@ -60,6 +61,8 @@ class XmlParserManager: NSObject, XMLParserDelegate {
         } else if (element as NSString).isEqual(to: "enclosure") {
             if let urlString = attributeDict["url"] {
                 img.append(urlString as AnyObject)
+            } else {
+                img.append(image!)
             }
         }
     }
